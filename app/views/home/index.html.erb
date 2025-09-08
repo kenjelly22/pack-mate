@@ -1,0 +1,12 @@
+<h1>Welcome to PackMate!</h1>
+<h4>“Never forget the essentials again.”</h4>
+
+<% if user_signed_in? %>
+  <p>Hello, <%= current_user.email %>! Here are your packing lists:</p>
+  <!-- Placeholder for your lists -->
+  <ul>
+    <li>Your first packing list will appear here.</li>
+  </ul>
+<% else %>
+  <p>Please <%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to get started.</p>
+<% end %>
