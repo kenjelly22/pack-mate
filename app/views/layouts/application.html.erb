@@ -30,7 +30,9 @@
       <!-- Navigation -->
       <nav class="top-nav">
         <% if user_signed_in? %>
-          Logged in as <%= current_user.email %> |
+          <span>
+            Logged in as <%= current_user.email %> |
+          </span>
           <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 
         <% else %>
