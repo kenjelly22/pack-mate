@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_09_004205) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_193957) do
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "category", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_09_004205) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
