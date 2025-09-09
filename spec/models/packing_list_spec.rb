@@ -10,6 +10,5 @@ RSpec.describe PackingList, type: :model do
 
     it { should validate_uniqueness_of(:name) }
     it { should validate_presence_of(:destination) }
-    it { should validate_presence_of(:start_date) }
   end
 end
