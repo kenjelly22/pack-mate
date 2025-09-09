@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe PackingListItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validations" do
+    subject { build(:packing_list_item) }
+
+    it "has a valid factory" do
+      expect(subject).to be_valid
+    end
+
+    it { should validate_presence_of(:quantity) }
+    it { should validate_presence_of(:status) }
+  end
 end

@@ -3,5 +3,6 @@ class PackingList < ApplicationRecord
   has_many :packing_list_items
   has_many :items, through: :packing_list_items
 
-  validates :name, :destination, :start_date, presence: true
+  validates :name, uniqueness: true, presence: true
+  validates :destination, presence: true
 end
