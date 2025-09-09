@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :packing_list_item do
-    packing_list { nil }
-    item { nil }
+    quantity { 2 }
+    status { "packed" }
+
+    association :packing_list
+    association :item
   end
 end
