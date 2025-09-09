@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_09_202313) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_202825) do
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.string "category", null: false
@@ -21,8 +21,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_09_202313) do
   end
 
   create_table "packing_list_items", force: :cascade do |t|
-    t.integer "quantity", default: 1
-    t.string "status", default: "not_packed"
+    t.integer "quantity", default: 1, null: false
+    t.string "status", default: "not_packed", null: false
     t.integer "packing_list_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
