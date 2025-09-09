@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
-    user { nil }
+    sequence(:name) { |n| "Toothbrush#{n}" }
+    category { "toiletries" }
   end
 end
