@@ -1,2 +1,8 @@
 <h1><%= @packing_list.name %></h1>
 <h3><%= @packing_list.destination %></h3>
+
+<ul>
+  <% @packing_list_items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+</ul>
