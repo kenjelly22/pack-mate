@@ -2,6 +2,7 @@
 
 <% if @packing_lists.any? %>
   <h3>Here are your packing lists:</h3>
+
   <ul>
     <% @packing_lists.each do |packing_list| %>
       <li>
@@ -9,7 +10,10 @@
       </li>
     <% end %>
   </ul>
+
+  <%= link_to "Create a new list!", new_packing_list_path %>
+
 <% else %>
   <h3>You don't have any packing lists yet.</h3>
-  <%= button_to "Create your first list!" %>
+  <%= link_to "Create your first list!", new_packing_list_path %>
 <% end %>
