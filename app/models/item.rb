@@ -7,4 +7,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :category, presence: true, inclusion: { in: CATEGORIES }
+
+  scope :generic, -> { where(user_id: nil) }
+  scope :by_category, ->(category) { where(category: category) }
 end
