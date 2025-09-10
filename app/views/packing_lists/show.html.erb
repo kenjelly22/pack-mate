@@ -1,14 +1,16 @@
 <h1><%= @packing_list.name %></h1>
-<h3><%= @packing_list.destination %></h3>
+<h4><%= @packing_list.destination %></h3>
 
-<% if @packing_list_items %>
+<% if @packing_list_items.any? %>
+
   <ul>
-    <% @packing_list_items.each do |item| %>
-      <li><%= item.name %></li>
+    <% @packing_list_items.each do |packing_list_item| %>
+      <li><%= packing_list_item.name %></li>
     <% end %>
   </ul>
-  <%= button_to "Add Items" %>
+
 <% else %>
   <h3>No items in your Packing List yet.</h3>
-  <%= button_to "Add Items" %>
 <% end %>
+
+<%= link_to "Add Items" %>
