@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :packing_list do
-    name { "Quest 2025" }
-    destination { "Cancun" }
+    name { Faker::Verb.base.capitalize }
+    destination { Faker::Address.city }
 
     association :user
   end
