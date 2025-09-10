@@ -6,7 +6,7 @@ class PackingListsController < ApplicationController
   end
 
   def show
-    @packing_list = current_user.packing_lists.find_by(params[:id])
+    @packing_list = current_user.packing_lists.find(params[:id])
     @packing_list_items = @packing_list.items
   end
 
