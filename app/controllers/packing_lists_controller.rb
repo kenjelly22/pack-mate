@@ -18,7 +18,7 @@ class PackingListsController < ApplicationController
     @packing_list = current_user.packing_lists.new(packing_list_params)
 
     if @packing_list.save
-      redirect_to packing_lists_path(@packing_lists)
+      redirect_to packing_lists_path
     else
       render :new, status: :unprocessable_entity
 
