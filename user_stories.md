@@ -28,7 +28,7 @@ Use link_to for each packing list on the user page. Display the packing list pag
 **User Story:**  
 As a User, I want to see the details of a packing list along with all items currently on the list so I know what to pack.  
 **Details:**.
-Display packing list details: name, destination, trip date. Display all items on the packing list: name, category, quantity, and status. Order items by category then by name.
+Display packing list details: name, destination. Display all items on the packing list: name, category, quantity, and status. Order items by category then by name.
 
 ## Feature 5: Add Items to Packing List
 

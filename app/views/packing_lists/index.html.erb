@@ -1,0 +1,20 @@
+<p>Hello, <%= current_user.name %>!</p>
+
+<% if @packing_lists.any? %>
+  <h3>Here are your packing lists:</h3>
+
+  <ul>
+    <% @packing_lists.each do |packing_list| %>
+      <li>
+        <%= link_to packing_list.name, packing_list_path(packing_list) %> - <%= packing_list.destination %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Create a new list!", new_packing_list_path %>
+
+<% else %>
+  <h3>You don't have any packing lists yet.</h3>
+
+  <%= link_to "Create your first list!", new_packing_list_path %>
+<% end %>
