@@ -3,9 +3,9 @@
 <% if @packing_lists.any? %>
   <h3>Here are your packing lists:</h3>
   <ul>
-    <%= @packing_lists.each do |packing_list| %>
+    <% @packing_lists.each do |packing_list| %>
       <li>
-        <%= link_to packing_list.name, packing_list_path(packing_list) %> - <% packing_list.destination %>
+        <%= link_to packing_list.name, packing_list_path(packing_list) %> - <%= packing_list.destination %>
       </li>
     <% end %>
   </ul>
