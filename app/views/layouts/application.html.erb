@@ -33,6 +33,7 @@
           <span>
             Logged in as <%= current_user.name %> |
           </span>
+          <%= link_to 'Dashboard', packing_lists_path %> |
           <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 
         <% else %>
