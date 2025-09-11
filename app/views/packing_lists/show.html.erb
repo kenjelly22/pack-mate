@@ -29,13 +29,21 @@
       <% if items_in_category.any? %>
         <h4><%= category.titleize %></h4>
         <% items_in_category.each do |pli| %>
+
           <div>
             <%= check_box_tag "packed_item_ids[]", pli.id, pli.status == "packed" %>
+
+            <%= fields_for "packing_list_items[]", pli do |pli_fields| %>
+              <%= pli_fields.number_field :quantity, style: "width: 60px;" %>
+            <% end %>
+
             <%= label_tag "packed_item_ids_#{pli.id}", pli.item.name.titleize %>
+
             <% if pli.status == "packed" %>
               <span style="color: green; font-weight: bold; margin-left: 5px;">Packed ✅</span>
             <% end %>
           </div>
+
         <% end %>
       <% end %>
     <% end %>
