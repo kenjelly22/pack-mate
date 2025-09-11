@@ -16,15 +16,17 @@
   <% Item::CATEGORIES.each do |category| %>
     <% items_in_category = @items.by_category(category) %>
     <% if items_in_category.any? %>
-      <h4><%= category.capitalize %></h4>
+      <h4><%= category.titleize %></h4>
       <% items_in_category.each do |item| %>
         <div>
           <%= check_box_tag "item_ids[]", item.id %>
-          <%= label_tag "item_ids_#{item.id}", item.name %>
+          <%= label_tag "item_ids_#{item.id}", item.name.titleize %>
         </div>
       <% end %>
     <% end %>
   <% end %>
+
   <br />
-  <%= submit_tag "Add Selected Items" %>
+
+  <%= f.submit "Add Selected Items" %>
 <% end %>
