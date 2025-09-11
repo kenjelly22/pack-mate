@@ -4,14 +4,22 @@
 <% if @packing_list_items.any? %>
 
   <%= form_with model: @packing_list, local: true do |f| %>
+
+    <p>Check off items once they are packed then...
+      <%= f.submit "Update Packing List" %></p>
+
     <% Item::CATEGORIES.each do |category| %>
-      <% items_in_category = @items.by_category(category) %>
+      <% items_in_category = @packing_list_items.select { |pli| pli.item.category == category }
+%>
       <% if items_in_category.any? %>
         <h4><%= category.titleize %></h4>
-        <% items_in_category.each do |item| %>
+        <% items_in_category.each do |pli| %>
           <div>
-            <%= check_box_tag "item_ids[]", item.id %>
-            <%= label_tag "item_ids_#{item.id}", item.name.titleize %>
+            <%= check_box_tag "packed_item_ids[]", pli.id, pli.status == "packed" %>
+            <%= label_tag "packed_item_ids_#{pli.id}", pli.item.name.titleize %>
+            <% if pli.status == "packed" %>
+              <span style="color: green; font-weight: bold; margin-left: 5px;">Packed ✅</span>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -20,4 +28,5 @@
 <% else %>
   <h3>No items in your Packing List yet.</h3>
 <% end %>
+<br />
 <%= link_to "Add Items", new_packing_list_packing_list_item_path(@packing_list) %>
