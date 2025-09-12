@@ -8,6 +8,9 @@ class PackingListsController < ApplicationController
   def show
     @packing_list = current_user.packing_lists.find(params[:id])
     @packing_list_items = @packing_list.items
+    ##
+    @items = Item.all_for_user(current_user)
+    ##
   end
 
   def new
@@ -23,6 +26,12 @@ class PackingListsController < ApplicationController
       render :new, status: :unprocessable_entity
 
     end
+  end
+
+  def destroy
+    @packing_list = current_user.packing_lists.find(params[:id])
+    @packing_list.destroy
+    redirect_to packing_lists_path, notice: "Packing list deleted successfully."
   end
 
   private
