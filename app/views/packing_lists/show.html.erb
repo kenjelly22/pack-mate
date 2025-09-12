@@ -22,7 +22,6 @@
 
     <p>Check off items once they are packed then...
       <%= f.submit "Update Packing List" %></p>
-    <%= link_to "Add Items", new_packing_list_packing_list_item_path(@packing_list) %>
 
     <% Item::CATEGORIES.each do |category| %>
       <% items_in_category = @packing_list_items.select { |pli| pli.item.category == category }
@@ -48,3 +47,5 @@
 <% else %>
   <h3>No items in your Packing List yet.</h3>
 <% end %>
+<br />
+<%= link_to "Add Items", new_packing_list_packing_list_item_path(@packing_list) %>

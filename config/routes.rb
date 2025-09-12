@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [ :new, :create ]
 
-  resources :packing_lists, only: [ :index, :show, :new, :create, :update ] do
+  resources :packing_lists do
     resources :packing_list_items, only: [ :new, :create ]
   end
 end
