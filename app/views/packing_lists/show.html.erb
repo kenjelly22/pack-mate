@@ -5,7 +5,22 @@
 
 <% if @packing_list_items.any? %>
 
-  <%= form_with model: @packing_list, local: true do |f| %>
+  <%= form_with model: @packing_list_items, local: true do |f| %>
+
+    <% if @packing_list_items.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@packing_list_items.errors.count, "error") %>
+          prohibited this packing list from being saved:
+        </h2>
+
+        <ul>
+          <% @packing_list_items.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <p>Check off items once they are packed then...
       <%= f.submit "Update Packing List" %></p>
