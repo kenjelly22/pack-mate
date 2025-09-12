@@ -1,17 +1,19 @@
 <h2>Add Items to <%= @packing_list.name %></h2>
 
-<h3>Create a New Item</h3>
+<h3>Select Items</h3>
 
 <%= form_with url: packing_list_packing_list_items_path(@packing_list), local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :category %>
-  <%= f.select :category,
-    options_for_select(Item::CATEGORIES, params[:category]),
-    include_blank: "All" %>
-
-  <h3>Select Items</h3>
+  <% if @packing_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@packing_list.errors.count, "error") %> prohibited this packing list from being saved:</h2>
+      <ul>
+        <% @packing_list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <% Item::CATEGORIES.each do |category| %>
     <% items_in_category = @items.by_category(category) %>
