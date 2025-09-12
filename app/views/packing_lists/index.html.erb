@@ -4,14 +4,23 @@
   <h3>Here are your packing lists:</h3>
 
   <ul>
-    <% @packing_lists.each do |packing_list| %>
+    <% @packing_lists.future_dates.each do |packing_list| %>
       <li>
         <%= button_to "❌", packing_list_path(packing_list),
           method: :delete,
           form: { style: "display:inline;" },
           class: "text-red-600" %>
-        <%= link_to packing_list.name, packing_list_path(packing_list) %> - <%= packing_list.destination %>
+        <%= packing_list.trip_date %> - <%= link_to packing_list.name, packing_list_path(packing_list) %> - <%= packing_list.destination %>
 
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Here are your old packing lists:</h3>
+  <ul>
+    <% @packing_lists.past_dates.each do |packing_list| %>
+      <li>
+        <%= packing_list.trip_date %> - <%= link_to packing_list.name, packing_list_path(packing_list) %> - <%= packing_list.destination %>
       </li>
     <% end %>
   </ul>

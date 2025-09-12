@@ -10,6 +10,8 @@ RSpec.describe PackingList, type: :model do
 
     it { should validate_uniqueness_of(:name) }
     it { should validate_presence_of(:destination) }
+
+    it { should validate_presence_of(:trip_date) }
   end
 
   context "user dashboard" do

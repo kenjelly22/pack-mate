@@ -1,0 +1,5 @@
+class AddDateToPackingLists < ActiveRecord::Migration[8.0]
+  def change
+    add_column :packing_lists, :trip_date, :date
+  end
+end
