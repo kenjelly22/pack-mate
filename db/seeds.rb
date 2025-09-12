@@ -92,7 +92,6 @@ packing_lists.each do |list|
     PackingListItem.create!(
       packing_list: list,
       item: item,
-      quantity: rand(1..3),
       status: [ "packed", "not_packed" ].sample
     )
   end
