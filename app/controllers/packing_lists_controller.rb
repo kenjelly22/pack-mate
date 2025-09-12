@@ -45,6 +45,12 @@ class PackingListsController < ApplicationController
     end
   end
 
+  def destroy
+    @packing_list = current_user.packing_lists.find(params[:id])
+    @packing_list.destroy
+    redirect_to packing_lists_path, notice: "Packing list deleted successfully."
+  end
+
   private
 
   def packing_list_params
