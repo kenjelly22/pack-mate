@@ -18,8 +18,8 @@ class PackingListItemsController < ApplicationController
       items.each do |item|
         packing_list.items << item unless packing_list.items.include?(item)
       end
-
-      redirect_to packing_list, notice: "Items added successfully."
     end
+
+    redirect_to packing_list, notice: "Items added successfully."
   end
 end
