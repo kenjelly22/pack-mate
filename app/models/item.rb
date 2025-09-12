@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :category, presence: true, inclusion: { in: CATEGORIES }
 
-  scope :all_for_user, ->(user) { generic.or(by_user(user)) }
   scope :generic, -> { where(user_id: nil) }
-  scope :by_user, ->(user) { where(user: user) }
+  scope :by_user, ->(user) { where(user_id: user.id) }
+  scope :all_for_user, ->(user) { generic.or(by_user(user)) }
   scope :by_category, ->(category) { where(category: category) }
 end
