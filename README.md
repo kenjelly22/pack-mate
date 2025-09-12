@@ -71,7 +71,7 @@ bundle exec rspec
 
 ## Demo
 
-![Demo GIF](demo/pack-mate-demo.gif)
+![Demo GIF](demo/demo.gif)
 
 ## ERD Diagram
 
