@@ -1,16 +1,25 @@
 <h1><%= @packing_list.name %></h1>
 <h4><%= @packing_list.destination %></h3>
 
-<% if @packing_list_items.any? %>
+<%= link_to "Add Items", new_packing_list_packing_list_item_path(@packing_list) %>
 
-  <ul>
-    <% @packing_list_items.each do |packing_list_item| %>
-      <li><%= packing_list_item.name %></li>
+<% if @packing_list_items.any? %>
+  <% if @packing_list_items.any? %>
+    <%= form_with model: @packing_list, local: true do |f| %>
+      <% Item::CATEGORIES.each do |category| %>
+        <% items_in_category = @packing_list_items.select { |pli| pli.item&.category == category } %>
+        <% if items_in_category.any? %>
+          <h4><%= category.titleize %></h4>
+          <ul>
+            <% items_in_category.each do |pli| %>
+              <li><%= pli.item.name.titleize %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
     <% end %>
-  </ul>
+  <% end %>
 
 <% else %>
   <h3>No items in your Packing List yet.</h3>
 <% end %>
-
-<%= link_to "Add Items", new_packing_list_packing_list_item_path(@packing_list) %>

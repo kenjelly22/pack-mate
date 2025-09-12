@@ -7,7 +7,7 @@ class PackingListsController < ApplicationController
 
   def show
     @packing_list = current_user.packing_lists.find(params[:id])
-    @packing_list_items = @packing_list.items
+    @packing_list_items = @packing_list.packing_list_items.includes(:item)
     ##
     @items = Item.all_for_user(current_user)
     ##
