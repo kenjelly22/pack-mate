@@ -47,7 +47,7 @@ RSpec.describe FuturePackingListComponent, type: :component do
     end
   end
 
-  context "when current packing lists do not exist" do
+  context "when future packing lists do not exist" do
     let(:packing_lists) { double("PackingLists", future_dates: []) }
     it "renders nothing" do
       render_inline(described_class.new(packing_lists: packing_lists))
