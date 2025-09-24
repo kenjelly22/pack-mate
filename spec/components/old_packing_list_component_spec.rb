@@ -10,8 +10,8 @@ RSpec.describe OldPackingListComponent, type: :component do
   let(:packing_lists) { double("PackingLists", past_dates: [ packing_list1, packing_list2 ]) }
 
   it "displays the heading" do
-    result = render_inline(described_class.new(packing_lists: packing_lists))
-    expect(result.text).to include("Here are your old packing lists:")
+    render_inline(described_class.new(packing_lists: packing_lists))
+    expect(page).to have_text("Here are your old packing lists:")
   end
 
   context "when past packing list exists" do
