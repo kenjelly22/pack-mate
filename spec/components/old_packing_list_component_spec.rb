@@ -3,13 +3,20 @@
 require "rails_helper"
 
 RSpec.describe OldPackingListComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include ViewComponent::TestHelpers
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  let(:packing_list1) { double("PackingList", trip_date: "2023-01-01", name: "Trip 1", destination: "Paris") }
+  let(:packing_list2) { double("PackingList", trip_date: "2023-02-01", name: "Trip 2", destination: "Rome") }
+  let(:packing_lists) { double("PackingLists", past_dates: [ packing_list1, packing_list2 ]) }
+
+  it "renders component without errors" do
+    expect {
+      render_inline(described_class.new(packing_lists: packing_lists))
+    }.not_to raise_error
+  end
+
+  it "displays the heading" do
+    result = render_inline(OldPackingListComponent.new(packing_lists: packing_lists))
+    expect(result.text).to include("Here are your old packing lists:")
+  end
 end
