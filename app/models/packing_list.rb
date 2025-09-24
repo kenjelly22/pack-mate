@@ -9,11 +9,11 @@ class PackingList < ApplicationRecord
 
   validate :trip_date_cannot_be_in_the_past
 
-  scope :past_dates, -> { where(trip_date: ..Date.today) }
+  scope :past_dates, -> { where(trip_date: ..Date.yesterday) }
   scope :future_dates, -> { where(trip_date: Date.today..) }
 
   def trip_date_cannot_be_in_the_past
-    if trip_date && trip_date < Date.today
+    if trip_date && trip_date < Date.yesterday
       errors.add(:trip_date, "can't be in the past")
     end
   end
