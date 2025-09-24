@@ -1,6 +1,7 @@
 <p>Hello, <%= current_user.name %>!</p>
 
 <% if @packing_lists.any? %>
+  <%# CurrentPackingListsComponent %>
   <h3>Here are your packing lists:</h3>
 
   <ul>
@@ -15,8 +16,11 @@
       </li>
     <% end %>
   </ul>
+  <%# down to here %>
 
+  <%# OldPackingListsComponent %>
   <h3>Here are your old packing lists:</h3>
+
   <ul>
     <% @packing_lists.past_dates.each do |packing_list| %>
       <li>
@@ -24,6 +28,7 @@
       </li>
     <% end %>
   </ul>
+  <%# down to here %>
 
   <%= link_to "Create a new list!", new_packing_list_path %>
 
