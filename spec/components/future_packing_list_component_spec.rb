@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CurrentPackingListComponent, type: :component do
+RSpec.describe FuturePackingListComponent, type: :component do
   include ViewComponent::TestHelpers
 
   context "when current packing lists exist" do

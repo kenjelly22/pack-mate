@@ -1,7 +1,7 @@
 <p>Hello, <%= current_user.name %>!</p>
 
 <% if @packing_lists.any? %>
-  <%= render(CurrentPackingListComponent.new(packing_lists: @packing_lists))%>
+  <%= render(FuturePackingListComponent.new(packing_lists: @packing_lists))%>
 
   <%= render(OldPackingListComponent.new(packing_lists: @packing_lists)) %>
 

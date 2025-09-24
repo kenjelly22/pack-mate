@@ -1,4 +1,4 @@
-class CurrentPackingListComponent < ViewComponent::Base
+class FuturePackingListComponent < ViewComponent::Base
   def initialize(packing_lists:)
     @packing_lists = packing_lists
   end
