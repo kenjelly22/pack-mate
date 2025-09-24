@@ -27,5 +27,17 @@ RSpec.describe OldPackingListComponent, type: :component do
       expect(page).to have_text("Trip 1")
       expect(page).to have_text("Rome")
     end
+
+    it "renders a ul tag" do
+      render_inline(described_class.new(packing_lists: packing_lists))
+
+      expect(page).to have_css("ul")
+    end
+
+    it "renders the correct number of li tags" do
+      render_inline(described_class.new(packing_lists: packing_lists))
+
+      expect(page).to have_css("li", count: packing_lists.past_dates.count)
+    end
   end
 end
