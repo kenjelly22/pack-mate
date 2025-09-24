@@ -5,12 +5,12 @@ require "rails_helper"
 RSpec.describe FuturePackingListComponent, type: :component do
   include ViewComponent::TestHelpers
 
-  context "when current packing lists exist" do
+  context "when future packing lists exist" do
     let(:packing_list1) { double("PackingList", trip_date: "2027-01-01", name: "Trip 1", destination: "London") }
     let(:packing_list2) { double("PackingList", trip_date: "2027-02-01", name: "Trip 2", destination: "Cancun") }
     let(:packing_lists) { double("PackingLists", future_dates: [ packing_list1, packing_list2 ]) }
 
-    it "renders component without errors" do
+    it "renders future without errors" do
       expect {
         render_inline(described_class.new(packing_lists: packing_lists))
       }.not_to raise_error
