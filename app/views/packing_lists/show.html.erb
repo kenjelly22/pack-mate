@@ -30,14 +30,14 @@
         <h4><%= category.titleize %></h4>
         <% items_in_category.each do |pli| %>
 
-          <div>
-            <%= check_box_tag "packed_item_ids[]", pli.id, pli.status == "packed" %>
+          <div data-controller="packing">
+            <%= check_box_tag "packed_item_ids[]", pli.id, pli.status == "packed", data: { action: "change->packing#togglePacked" } %>
 
             <%= label_tag "packed_item_ids_#{pli.id}", pli.item.name.titleize %>
 
-            <% if pli.status == "packed" %>
-              <span style="color: green; font-weight: bold; margin-left: 5px;">Packed ✅</span>
-            <% end %>
+            <span data-packing-target="status" style="color: green; font-weight: bold; margin-left: 5px;">
+              <%= "Packed ✅" if pli.status == "packed" %>
+            </span>
           </div>
 
         <% end %>
